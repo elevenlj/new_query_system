@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-03-21 房地产新闻资讯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        .header .subtitle {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a73e8;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8f0fe;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title::before {
+            content: "";
+            width: 4px;
+            height: 20px;
+            background: #1a73e8;
+            border-radius: 2px;
+        }
+        .news-item {
+            padding: 16px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #202124;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .news-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .news-title a:hover {
+            color: #1a73e8;
+            text-decoration: underline;
+        }
+        .news-summary {
+            font-size: 14px;
+            color: #5f6368;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        .news-meta {
+            font-size: 12px;
+            color: #9aa0a6;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .news-meta .source {
+            color: #1a73e8;
+            font-weight: 500;
+        }
+        .news-meta .date {
+            color: #80868b;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-right: 8px;
+        }
+        .tag-hot {
+            background: #fee;
+            color: #c5221f;
+        }
+        .tag-chengdu {
+            background: #e8f0fe;
+            color: #1a73e8;
+        }
+        .tag-policy {
+            background: #e6f4ea;
+            color: #137333;
+        }
+        .tag-market {
+            background: #fef7e0;
+            color: #f9ab00;
+        }
+        .hot-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .hot-item {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #1a73e8;
+        }
+        .hot-item-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #202124;
+            margin-bottom: 6px;
+        }
+        .hot-item-data {
+            font-size: 12px;
+            color: #5f6368;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-card.chengdu {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #80868b;
+            font-size: 12px;
+        }
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏠 2026-03-21 房地产新闻资讯</h1>
+            <div class="subtitle">成都楼市动态 | 全国楼市要闻 | 政策解读</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">📊 成都楼市核心数据</div>
+            <div class="stats-grid">
+                <div class="stat-card chengdu">
+                    <div class="stat-value">113.3万㎡</div>
+                    <div class="stat-label">前2月新房成交面积</div>
+                </div>
+                <div class="stat-card chengdu">
+                    <div class="stat-value">323.6万㎡</div>
+                    <div class="stat-label">前2月二手房成交面积</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">+18%</div>
+                    <div class="stat-label">二手房同比增长</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">第1名</div>
+                    <div class="stat-label">新房成交全国排名</div>
+                </div>
+            </div>
+            <p style="font-size: 13px; color: #5f6368; text-align: center;">数据来源：克而瑞研究中心 | 统计周期：2026年1-2月</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">🏙️ 成都本地新闻</div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-hot">热门</span>
+                    <span class="tag tag-chengdu">成都</span>
+                    <a href="https://www.haofangdp.com/fjdpsc/newslist/reviewconsultation?itemId=7441044150541809663" target="_blank">招商玺独占4.70亿！成都2026年2月销售金额破43.16亿</a>
+                </div>
+                <div class="news-summary">
+                    成都2026年2月房产销售金额榜单正式发布，该月成都房产总销售金额达43.16亿元，总平均均价为26,040.35元/㎡。招商玺以4.70亿元的销售金额夺冠，其位于成都高新区大源西板块，创新性推出约22席合院产品。锦宸院Ⅱ期上玺销售金额3.26亿元排名第二，麓湖丽世缦华销售金额1.01亿元排名第三。高端楼盘销售金额占总金额的71.49%，市场分层明显。
+                </div>
+                <div class="news-meta">
+                    <span class="source">克而瑞好房点评网</span>
+                    <span class="date">2026-03-21</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-chengdu">成都</span>
+                    <a href="https://www.fang.com/note/cd_2868110.html" target="_blank">成都楼市2026年3月成交数据：新房二手房均翻倍增长</a>
+                </div>
+                <div class="news-summary">
+                    3月成都楼市成交持续火爆。新房方面：本月总套数3778套，较上月增长103.4%；总面积486364.3㎡，较上月增长97.1%。二手房方面：本月总套数14564套，较上月增长111.8%；总面积1369206.1㎡，较上月增长109.5%。虽然单日成交有波动，但本月整体成交翻倍增长，显示市场动能强劲。
+                </div>
+                <div class="news-meta">
+                    <span class="source">房天下</span>
+                    <span class="date">2026-03-20</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-hot">热门</span>
+                    <span class="tag tag-chengdu">成都</span>
+                    <a href="https://m.163.com/dy/article_cambrian/KOAHBSJQ051591G6.html" target="_blank">卖爆了！成都楼市迎来实质性回暖</a>
+                </div>
+                <div class="news-summary">
+                    成都楼市小阳春真的来了！成都TOD旗下项目单周认购金额超2亿元；锦樾序周末成交24套；招商时代公园上新3天成交2.8亿；保利旗下项目3月已成交67套，成交金额1.5亿；高投云锦66累计成交超50套。二手房方面，截止3月17日全市二手房成交11343套，单日最高成交达1143套，刷新本月记录。
+                </div>
+                <div class="news-meta">
+                    <span class="source">网易房产</span>
+                    <span class="date">2026-03-18</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-chengdu">成都</span>
+                    <a href="https://cd.news.fang.com/gdxw/2026-03-21/1.html" target="_blank">成都重磅新规！车位销售分阶段管理</a>
+                </div>
+                <div class="news-summary">
+                    成都出台车位销售管理新规，实行分阶段管理模式。新规预留5%车位保障业主权益，对车位销售价格、租售比例等方面进行规范。这一政策旨在保护购房者权益，规范房地产开发项目车位销售行为，促进房地产市场健康发展。
+                </div>
+                <div class="news-meta">
+                    <span class="source">成都房天下</span>
+                    <span class="date">2026-03-21</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-chengdu">成都</span>
+                    <a href="https://cd.news.fang.com/gdxw/2026-03-21/1.html" target="_blank">老破小逆袭成楼市新宠，揭秘低总价房产的财富密码</a>
+                </div>
+                <div class="news-summary">
+                    成都"老破小"房源成为楼市新热点，低总价房产吸引刚需购房者关注。随着租金回报率提升，部分购房者选择"抄底"老破小，用租金跑赢月供。业内提醒：购买老破小需关注地段、配套、房龄等因素，理性评估投资价值。
+                </div>
+                <div class="news-meta">
+                    <span class="source">成都房天下</span>
+                    <span class="date">2026-03-20</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-chengdu">成都</span>
+                    <a href="https://www.haofangdp.com/fjdpsc/newslist/reviewconsultation?itemId=7441100028880024784" target="_blank">建发海耀独占3.52亿！刷新成都大平层单价纪录</a>
+                </div>
+                <div class="news-summary">
+                    2026年2月成都高端楼盘再创佳绩。建发海耀取证精装均价约7.5-7.69万元/㎡，主力总价1640-4989万元，刷新成都大平层产品单价纪录。项目位于金融城三期核心区，规划9栋全点式住宅，超130套产品为"一层一户"设计，在业内形成显著的客户虹吸效应。
+                </div>
+                <div class="news-meta">
+                    <span class="source">克而瑞好房点评网</span>
+                    <span class="date">2026-03-21</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-chengdu">成都</span>
+                    <a href="https://cd.news.fang.com/gdxw/2026-03-21/1.html" target="_blank">成都房屋征收新政培训圆满落幕</a>
+                </div>
+                <div class="news-summary">
+                    成都市房屋征收新政培训圆满落幕，培训围绕城市更新与房市健康发展主题展开，旨在提升工作人员政策理解和执行能力，推动成都城市更新工作规范有序开展。
+                </div>
+                <div class="news-meta">
+                    <span class="source">成都房天下</span>
+                    <span class="date">2026-03-18</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-chengdu">成都</span>
+                    <a href="https://cd.news.fang.com/gdxw/2026-03-21/1.html" target="_blank">成都2026年2月住宅维修资金使用详情公示</a>
+                </div>
+                <div class="news-summary">
+                    成都市公布2026年2月住宅专项维修资金使用情况，涉及多个住宅小区的维修工程项目，维修资金使用流程进一步规范透明，保障业主合法权益。
+                </div>
+                <div class="news-meta">
+                    <span class="source">成都房天下</span>
+                    <span class="date">2026-03-18</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-chengdu">成都</span>
+                    <a href="https://www.36kr.com/p/3481493275188352" target="_blank">成都两日土拍收金35.6亿，中铁建地产20.6亿溢价补仓</a>
+                </div>
+                <div class="news-summary">
+                    成都土拍市场呈现分化态势：核心区域天府新区地块受追捧，中铁建地产溢价16.43%拿下两宗地块；而东部新区、龙泉驿区、新都区地块则以底价成交。今年以来中铁建地产在成都已拿下四宗地块，共计耗资55.88亿元，继续深耕成都市场。
+                </div>
+                <div class="news-meta">
+                    <span class="source">36氪</span>
+                    <span class="date">2026-03-21</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <div class="section-title">🌐 全国楼市要闻</div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-policy">政策</span>
+                    <a href="https://ihouse.ifeng.com/news/2026_03_21-57329327_0.shtml" target="_blank">南京出台六项稳楼市新政："一类群体一策"供给差异化好房子</a>
+                </div>
+                <div class="news-summary">
+                    3月20日，南京正式发布《关于稳定房地产市场的政策措施》，围绕住房供给、消费提振、成本优化、营商环境等六大维度精准施策。实施"一类群体一策"，面向青年、养老、产城融合等人群精准供应优质住宅用地。进一步鼓励"以旧换新"，对完成"卖旧买新"的购房人给予贷款总额1%的贴息，全市贴息资金限额1亿元。同步全面推进各类房票政策，推行人才房票。
+                </div>
+                <div class="news-meta">
+                    <span class="source">凤凰网房产</span>
+                    <span class="date">2026-03-21</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-policy">政策</span>
+                    <a href="https://jingji.cctv.cn/2026/03/21/ARTIsBDDHHBwyKZ4yE9gka0q260321.shtml" target="_blank">郑州拟出台8条房地产新政</a>
+                </div>
+                <div class="news-summary">
+                    郑州将出台涉及信贷支持、公积金优化、群体倾斜、政务服务、市场规范等方面的8条房地产新政。主要内容包括：支持青年群体安居置业，鼓励金融机构面向35周岁以下来郑就业创业青年群体推出特色金融产品；强化多子女家庭购房支持；优化公积金贷款申请条件；加大保障性租赁住房供给，2026年分配1万套（间）；推行二手房"一房一码"制度等。
+                </div>
+                <div class="news-meta">
+                    <span class="source">央视新闻</span>
+                    <span class="date">2026-03-21</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-policy">政策</span>
+                    <a href="https://finance.sina.com.cn/roll/2026-03-17/doc-inhrfwqa9548240.shtml" target="_blank">多地房地产市场迎政策调整优化，全国70城房价环比降幅持续收窄</a>
+                </div>
+                <div class="news-summary">
+                    据国家统计局数据，2026年2月份70个大中城市商品住宅销售价格环比降幅继续收窄，市场出现积极变化。新建商品住宅销售价格环比上涨或持平城市个数比上月增加。年初以来，多地房地产市场迎来政策调整优化，超30地调整优化公积金贷款政策，在各类政策调整方向中，针对公积金贷款的调整政策数量最多，成为当前各地促进住房消费的重要抓手。
+                </div>
+                <div class="news-meta">
+                    <span class="source">长江商报/国家统计局</span>
+                    <span class="date">2026-03-16</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-market">市场</span>
+                    <a href="https://news.qq.com/rain/a/20260317A0576Z00" target="_blank">2026年楼市逐步回稳，三大核心信号支撑市场</a>
+                </div>
+                <div class="news-summary">
+                    2026年楼市呈现逐步回稳态势，三大核心信号支撑市场：政策环境已发生根本性转向，"着力稳定房地产市场"成为核心任务；市场自我修复机制已逐步启动，全国重点15城二手房1-2月累计成交同比微增2%；市场复苏呈现显著分化格局，成都等核心城市凭借持续人口流入和坚实产业基础，成为楼市稳定的"基本盘"。
+                </div>
+                <div class="news-meta">
+                    <span class="source">腾讯新闻</span>
+                    <span class="date">2026-03-17</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-policy">政策</span>
+                    <a href="https://news.qq.com/rain/a/20260315A03GG700" target="_blank">三大重磅新政指明成都楼市方向</a>
+                </div>
+                <div class="news-summary">
+                    两会明确将"着力稳定房地产市场"作为核心政策基调，"房住不炒"正式退出历史舞台。全国房地产开发用地政策迎来重大调整，新增住宅用地将减少。成都公积金贷款额度将提升：单缴存人最高额度由60万元提高至80万元，双缴存人由100万元提高至120万元；阶段性取消住房公积金贷款次数限制；支持购买现房，最高贷款额度上浮20%。
+                </div>
+                <div class="news-meta">
+                    <span class="source">腾讯新闻</span>
+                    <span class="date">2026-03-15</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-market">市场</span>
+                    <a href="https://view.inews.qq.com/a/20260320A05T5E00" target="_blank">房价大局已定：2026年起中国楼市将迎来3大变化</a>
+                </div>
+                <div class="news-summary">
+                    住建部明确2026年将推进现房销售制，实现"所见即所得"，全国至少已有32个省市出台现房销售试点文件。2026年1月住建部发布《关于提升住房品质的意见》，"好房子"第一次有了全国性清晰指引，新建住宅层高不应低于3米，4层及以上需设电梯。"好房子"溢价效应显著，符合标准的项目溢价率达15%-20%。
+                </div>
+                <div class="news-meta">
+                    <span class="source">腾讯新闻</span>
+                    <span class="date">2026-03-20</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">
+                    <span class="tag tag-market">市场</span>
+                    <a href="https://www.scfx.cn/News/Info.aspx?FID=117562fa-3666-4eca-8373-e5aecf82a0ad" target="_blank">2026年政府工作报告定调房地产工作：着力稳定房地产市场</a>
+                </div>
+                <div class="news-summary">
+                    2026年政府工作报告明确：着力稳定房地产市场，因城施策控增量、去库存、优供给，探索多渠道盘活存量商品房，鼓励收购存量商品房重点用于保障性住房等。深化住房公积金制度改革，优化保障性住房供给，加快危旧房改造，有序推动安全舒适绿色智慧的"好房子"建设，实施房屋品质提升工程和物业服务质量提升行动。
+                </div>
+                <div class="news-meta">
+                    <span class="source">四川省房地产业协会</span>
+                    <span class="date">2026-03-10</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <div class="section-title">📈 热门楼盘榜单</div>
+            <div class="hot-list">
+                <div class="hot-item">
+                    <div class="hot-item-title">🥇 招商玺</div>
+                    <div class="hot-item-data">销售金额：4.70亿元<br>区域：高新区大源西<br>产品：合院产品（约22席）<br>均价参考：26,040元/㎡</div>
+                </div>
+                <div class="hot-item">
+                    <div class="hot-item-title">🥈 锦宸院Ⅱ期上玺</div>
+                    <div class="hot-item-data">销售金额：3.26亿元<br>产品类型：高端改善住宅<br>市场表现突出</div>
+                </div>
+                <div class="hot-item">
+                    <div class="hot-item-title">🥉 麓湖丽世缦华</div>
+                    <div class="hot-item-data">销售金额：1.01亿元<br>区域：天府新区麓湖<br>定位：高端生态住宅</div>
+                </div>
+                <div class="hot-item">
+                    <div class="hot-item-title">🏆 建发海耀</div>
+                    <div class="hot-item-data">销售金额：3.52亿（另计）<br>区域：金融城三期<br>均价：7.5-7.69万元/㎡<br>刷新成都大平层单价纪录</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>数据来源：克而瑞研究中心、每日经济新闻、房天下、36氪、央视新闻等</p>
+            <p>查询日期：2026-03-21 | 生成时间：2026-03-22</p>
+            <p style="margin-top: 8px;">免责声明：本报告仅供参考，不构成投资建议</p>
+        </div>
+    </div>
+</body>
+</html>

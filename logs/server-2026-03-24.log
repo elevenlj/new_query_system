@@ -1,0 +1,171 @@
+2026-03-24 09:03:28,617 [INFO] news_query_server - daily-log-smoke-test
+2026-03-24 09:05:56,514 [INFO] news_query_server - ============================================================
+2026-03-24 09:05:56,515 [INFO] news_query_server - 新闻查询配置系统 (轻量级内建服务)
+2026-03-24 09:05:56,515 [INFO] news_query_server - 访问地址: http://localhost:8000
+2026-03-24 09:05:56,515 [INFO] news_query_server - 服务端日志目录: /Users/bytedance/Desktop/develop/ai/news_query_system/logs
+2026-03-24 09:05:56,515 [INFO] news_query_server - ============================================================
+2026-03-24 09:06:54,792 [INFO] news_query_server - ============================================================
+2026-03-24 09:06:54,793 [INFO] news_query_server - 新闻查询配置系统 (轻量级内建服务)
+2026-03-24 09:06:54,793 [INFO] news_query_server - 访问地址: http://localhost:8000
+2026-03-24 09:06:54,793 [INFO] news_query_server - 服务端日志目录: /Users/bytedance/Desktop/develop/ai/news_query_system/logs
+2026-03-24 09:06:54,793 [INFO] news_query_server - ============================================================
+2026-03-24 09:06:55,643 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /config.json HTTP/1.1" 200 -
+2026-03-24 09:06:55,644 [INFO] news_query_server - GET /config.json -> 200
+2026-03-24 09:07:44,086 [INFO] news_query_server - ============================================================
+2026-03-24 09:07:44,088 [INFO] news_query_server - 新闻查询配置系统 (轻量级内建服务)
+2026-03-24 09:07:44,088 [INFO] news_query_server - 访问地址: http://localhost:8000
+2026-03-24 09:07:44,089 [INFO] news_query_server - 服务端日志目录: /Users/bytedance/Desktop/develop/ai/news_query_system/logs
+2026-03-24 09:07:44,089 [INFO] news_query_server - ============================================================
+2026-03-24 09:07:58,132 [INFO] news_query_server - HTTP 127.0.0.1 - "GET / HTTP/1.1" 200 -
+2026-03-24 09:07:58,268 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /config.json HTTP/1.1" 200 -
+2026-03-24 09:07:58,269 [INFO] news_query_server - GET /config.json -> 200
+2026-03-24 09:07:58,271 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /logs HTTP/1.1" 200 -
+2026-03-24 09:07:58,271 [INFO] news_query_server - GET /logs -> 200
+2026-03-24 09:07:58,273 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /news_list HTTP/1.1" 200 -
+2026-03-24 09:07:58,274 [INFO] news_query_server - GET /news_list -> 200
+2026-03-24 09:08:00,987 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /config.json HTTP/1.1" 200 -
+2026-03-24 09:08:00,988 [INFO] news_query_server - GET /config.json -> 200
+2026-03-24 09:08:13,946 [INFO] news_query_server - HTTP 127.0.0.1 - "GET / HTTP/1.1" 304 -
+2026-03-24 09:08:13,982 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /config.json HTTP/1.1" 200 -
+2026-03-24 09:08:13,983 [INFO] news_query_server - GET /config.json -> 200
+2026-03-24 09:08:13,984 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /logs HTTP/1.1" 200 -
+2026-03-24 09:08:13,985 [INFO] news_query_server - GET /logs -> 200
+2026-03-24 09:08:13,987 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /news_list HTTP/1.1" 200 -
+2026-03-24 09:08:13,988 [INFO] news_query_server - GET /news_list -> 200
+2026-03-24 09:08:24,490 [INFO] news_query_server - HTTP 127.0.0.1 - "GET / HTTP/1.1" 304 -
+2026-03-24 09:08:24,510 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /config.json HTTP/1.1" 200 -
+2026-03-24 09:08:24,510 [INFO] news_query_server - GET /config.json -> 200
+2026-03-24 09:08:24,511 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /logs HTTP/1.1" 200 -
+2026-03-24 09:08:24,512 [INFO] news_query_server - GET /logs -> 200
+2026-03-24 09:08:24,513 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /news_list HTTP/1.1" 200 -
+2026-03-24 09:08:24,514 [INFO] news_query_server - GET /news_list -> 200
+2026-03-24 13:07:43,860 [INFO] news_query_server - ============================================================
+2026-03-24 13:07:43,862 [INFO] news_query_server - 新闻查询配置系统 (轻量级内建服务)
+2026-03-24 13:07:43,862 [INFO] news_query_server - 访问地址: http://localhost:8000
+2026-03-24 13:07:43,862 [INFO] news_query_server - 服务端日志目录: /Users/bytedance/Desktop/develop/ai/news_query_system/logs
+2026-03-24 13:07:43,863 [INFO] news_query_server - ============================================================
+2026-03-24 13:07:50,708 [INFO] news_query_server - HTTP 127.0.0.1 - "GET / HTTP/1.1" 304 -
+2026-03-24 13:07:50,868 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /config.json HTTP/1.1" 200 -
+2026-03-24 13:07:50,868 [INFO] news_query_server - GET /config.json -> 200
+2026-03-24 13:07:50,870 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /logs HTTP/1.1" 200 -
+2026-03-24 13:07:50,871 [INFO] news_query_server - GET /logs -> 200
+2026-03-24 13:07:50,877 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /news_list HTTP/1.1" 200 -
+2026-03-24 13:07:50,877 [INFO] news_query_server - GET /news_list -> 200
+2026-03-24 13:08:01,154 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /add_log HTTP/1.1" 200 -
+2026-03-24 13:08:01,154 [INFO] news_query_server - POST /add_log -> 200
+2026-03-24 13:08:01,155 [INFO] news_query_server - 开始执行查询，theme_id=1774183263340, theme_name=房地产
+2026-03-24 13:11:06,424 [INFO] news_query_server - 查询执行完成，theme=房地产, output=/Users/bytedance/Desktop/develop/ai/news_query_system/news_output/房地产/2026-03-23.html
+2026-03-24 13:11:06,424 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /run_query HTTP/1.1" 200 -
+2026-03-24 13:11:06,425 [INFO] news_query_server - POST /run_query -> 200
+2026-03-24 13:11:06,430 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /add_log HTTP/1.1" 200 -
+2026-03-24 13:11:06,431 [INFO] news_query_server - POST /add_log -> 200
+2026-03-24 13:11:06,433 [INFO] news_query_server - 开始执行查询，theme_id=1774185153442, theme_name=语音
+2026-03-24 13:13:37,953 [INFO] news_query_server - 查询执行完成，theme=语音, output=/Users/bytedance/Desktop/develop/ai/news_query_system/news_output/语音/2026-03-23.html
+2026-03-24 13:13:37,954 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /run_query HTTP/1.1" 200 -
+2026-03-24 13:13:37,954 [INFO] news_query_server - POST /run_query -> 200
+2026-03-24 13:13:37,959 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /add_log HTTP/1.1" 200 -
+2026-03-24 13:13:37,959 [INFO] news_query_server - POST /add_log -> 200
+2026-03-24 13:13:37,959 [INFO] news_query_server - [parse_time] 解析描述: 每天早上11点
+2026-03-24 13:13:38,894 [INFO] news_query_server - [parse_time] AI输出: "0 11 * * *"
+2026-03-24 13:13:38,895 [INFO] news_query_server - [parse_time] 解析结果: hour=11, minute=0, display=0 11 * * *
+2026-03-24 13:13:38,895 [INFO] news_query_server - [parse_time] 写入操作日志
+2026-03-24 13:13:38,898 [INFO] news_query_server - [parse_time] 操作日志已保存
+2026-03-24 13:13:38,898 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /parse_time HTTP/1.1" 200 -
+2026-03-24 13:13:38,898 [ERROR] news_query_server - [parse_time] 异常
+Traceback (most recent call last):
+  File "/Users/bytedance/Desktop/develop/ai/news_query_system/server.py", line 477, in do_POST
+    self._send_response(
+  File "/Users/bytedance/Desktop/develop/ai/news_query_system/server.py", line 135, in _send_response
+    self.end_headers()
+  File "/Users/bytedance/.pyenv/versions/3.10.14/lib/python3.10/http/server.py", line 535, in end_headers
+    self.flush_headers()
+  File "/Users/bytedance/.pyenv/versions/3.10.14/lib/python3.10/http/server.py", line 539, in flush_headers
+    self.wfile.write(b"".join(self._headers_buffer))
+  File "/Users/bytedance/.pyenv/versions/3.10.14/lib/python3.10/socketserver.py", line 826, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+2026-03-24 13:13:38,944 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /parse_time HTTP/1.1" 500 -
+2026-03-24 13:13:38,948 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /add_log HTTP/1.1" 200 -
+2026-03-24 13:13:38,949 [INFO] news_query_server - POST /add_log -> 200
+2026-03-24 13:13:38,951 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /add_log HTTP/1.1" 200 -
+2026-03-24 13:13:38,951 [INFO] news_query_server - POST /add_log -> 200
+2026-03-24 13:13:38,954 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /add_log HTTP/1.1" 200 -
+2026-03-24 13:13:38,954 [INFO] news_query_server - POST /add_log -> 200
+2026-03-24 13:13:38,957 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /add_log HTTP/1.1" 200 -
+2026-03-24 13:13:38,958 [INFO] news_query_server - POST /add_log -> 200
+2026-03-24 13:13:38,960 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /add_log HTTP/1.1" 200 -
+2026-03-24 13:13:38,961 [INFO] news_query_server - POST /add_log -> 200
+2026-03-24 13:22:31,547 [INFO] news_query_server - HTTP 127.0.0.1 - "GET / HTTP/1.1" 200 -
+2026-03-24 13:22:31,723 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /config.json HTTP/1.1" 200 -
+2026-03-24 13:22:31,724 [INFO] news_query_server - GET /config.json -> 200
+2026-03-24 13:22:31,727 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /logs HTTP/1.1" 200 -
+2026-03-24 13:22:31,727 [INFO] news_query_server - GET /logs -> 200
+2026-03-24 13:22:31,731 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /news_list HTTP/1.1" 200 -
+2026-03-24 13:22:31,732 [INFO] news_query_server - GET /news_list -> 200
+2026-03-24 13:22:32,737 [INFO] news_query_server - HTTP 127.0.0.1 - "GET / HTTP/1.1" 304 -
+2026-03-24 13:22:32,770 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /config.json HTTP/1.1" 200 -
+2026-03-24 13:22:32,771 [INFO] news_query_server - GET /config.json -> 200
+2026-03-24 13:22:32,772 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /logs HTTP/1.1" 200 -
+2026-03-24 13:22:32,773 [INFO] news_query_server - GET /logs -> 200
+2026-03-24 13:22:32,776 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /news_list HTTP/1.1" 200 -
+2026-03-24 13:22:32,777 [INFO] news_query_server - GET /news_list -> 200
+2026-03-24 13:22:33,418 [INFO] news_query_server - HTTP 127.0.0.1 - "GET / HTTP/1.1" 304 -
+2026-03-24 13:22:33,453 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /config.json HTTP/1.1" 200 -
+2026-03-24 13:22:33,453 [INFO] news_query_server - GET /config.json -> 200
+2026-03-24 13:22:33,455 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /logs HTTP/1.1" 200 -
+2026-03-24 13:22:33,455 [INFO] news_query_server - GET /logs -> 200
+2026-03-24 13:22:33,457 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /news_list HTTP/1.1" 200 -
+2026-03-24 13:22:33,457 [INFO] news_query_server - GET /news_list -> 200
+2026-03-24 13:25:49,736 [INFO] news_query_server - ============================================================
+2026-03-24 13:25:49,738 [INFO] news_query_server - 新闻查询配置系统 (轻量级内建服务)
+2026-03-24 13:25:49,738 [INFO] news_query_server - 访问地址: http://localhost:8000
+2026-03-24 13:25:49,739 [INFO] news_query_server - 服务端日志目录: /Users/bytedance/Desktop/develop/ai/news_query_system/logs
+2026-03-24 13:25:49,739 [INFO] news_query_server - ============================================================
+2026-03-24 13:25:53,856 [INFO] news_query_server - HTTP 127.0.0.1 - "GET / HTTP/1.1" 304 -
+2026-03-24 13:25:54,021 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /config.json HTTP/1.1" 200 -
+2026-03-24 13:25:54,022 [INFO] news_query_server - GET /config.json -> 200
+2026-03-24 13:25:54,022 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /logs HTTP/1.1" 200 -
+2026-03-24 13:25:54,023 [INFO] news_query_server - GET /logs -> 200
+2026-03-24 13:25:54,025 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /news_list HTTP/1.1" 200 -
+2026-03-24 13:25:54,026 [INFO] news_query_server - GET /news_list -> 200
+2026-03-24 13:26:01,867 [INFO] news_query_server - [parse_time][4305627d] 解析描述: 每天早上11点
+2026-03-24 13:26:01,869 [INFO] news_query_server - [parse_time][4305627d] Agent请求输入: model=glm-4-7-251222, base=https://ark.cn-beijing.volces.com/api/coding, description=每天早上11点
+2026-03-24 13:26:01,869 [INFO] news_query_server - [parse_time][4305627d] Agent system prompt: 你是时间表达式解析助手。
+将用户中文自然语言时间描述解析为每天固定执行时间。
+只返回 JSON，不要返回任何额外解释。
+JSON 格式必须是:
+{
+  "hour": 0-23 的整数,
+  "minute": 0-59 的整数
+}
+如果无法解析，也必须返回 JSON:
+{
+  "error": "错误原因"
+}
+2026-03-24 13:26:01,869 [INFO] news_query_server - [parse_time][4305627d] Agent user prompt: 当前时间: 2026-03-24 13:26:01
+用户描述: 每天早上11点
+2026-03-24 13:26:01,869 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /add_log HTTP/1.1" 200 -
+2026-03-24 13:26:01,870 [INFO] news_query_server - POST /add_log -> 200
+2026-03-24 13:26:02,116 [INFO] news_query_server - [parse_time][4305627d] Agent responses状态: status=404, cost_ms=246, body=
+2026-03-24 13:26:11,982 [INFO] news_query_server - [parse_time][4305627d] chat/completions回退状态: status=200, cost_ms=9859, body={"choices":[{"finish_reason":"stop","index":0,"logprobs":null,"message":{"content":"{\n  \"hour\": 11,\n  \"minute\": 0\n}","reasoning_content":"1. **分析请求：**\n    *   角色：时间表达式解析助手。\n    *   任务：将中文自然语言时间描述解析为每天固定执行时间。\n    *   输入：“当前时间: 2026-03-24 13:26:01”（上下文，虽然对于“每天”来说通常不相关），“用户描述: 每天早上11点”（每天早上 11 点）。\n    *   输出格式：仅限 JSON。无额外文本。\n    *   成功模式：`{\"hour\": int, \"minute\": int}`\n    *   错误模式：`{\"error\": \"string\"}`\n\n2. **分析输入字符串：**\n    *   “每天”（每天）-\u003e 指示重复频率，但输出格式仅要求具体的小时/分钟。\n    *   “早上”（早晨/上午）-\u003e 指示 12 小时制周期（AM）。\n    *   “11点”（11 点钟）-\u003e 指示时间。\n\n3. **确定时间：**\n    *   “早上11点”通常指 11:00 AM。\n    *   24 小时制：11:00。\n    *   小时：11\n    *   分钟：0（隐含）\n\n4. **验证约束：值：**\n    *   小时：11（在 0-23 范围内）。\n    *   分钟：0（在 0-59 范围内）。\n\n5. **构建 JSON：**\n    *   `{\"hour\": 11, \"minute\": 0}`\n\n6. **最终检查：**\n    *   是否符合格式？是。\n    *   是否有额外文本？否。\n    *   解析是否正确？是。\n\n7. **生成输出。**","role":"assistant"}}],"created":1774329972,"id":"021774329962379c737b75ff511374f96d5261fe3ffed00e45197","model":"glm-4-7","service_tier":"default","object":"chat.completion","usage":{"completion_tokens":406,"prompt_tokens":111,"total_tokens":517,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":390}}}
+2026-03-24 13:26:11,983 [INFO] news_query_server - [parse_time][4305627d] Agent最终输出(来自fallback): {
+  "hour": 11,
+  "minute": 0
+}
+2026-03-24 13:26:11,989 [INFO] news_query_server - [parse_time][4305627d] AI输出: {
+  "hour": 11,
+  "minute": 0
+}
+2026-03-24 13:26:11,990 [INFO] news_query_server - [parse_time][4305627d] 解析结果: hour=11, minute=0, display=11:00
+2026-03-24 13:26:11,990 [INFO] news_query_server - [parse_time] 写入操作日志
+2026-03-24 13:26:11,996 [INFO] news_query_server - [parse_time][4305627d] 操作日志已保存, total_cost_ms=10128
+2026-03-24 13:26:11,996 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /parse_time HTTP/1.1" 200 -
+2026-03-24 13:26:11,997 [INFO] news_query_server - POST /parse_time -> 200
+2026-03-24 13:26:12,008 [INFO] news_query_server - HTTP 127.0.0.1 - "POST /add_log HTTP/1.1" 200 -
+2026-03-24 13:26:12,009 [INFO] news_query_server - POST /add_log -> 200
+2026-03-24 13:37:43 [INFO] news_query_server - ============================================================
+2026-03-24 13:37:43 [INFO] news_query_server - 新闻查询配置系统 (Go 版本)
+2026-03-24 13:37:43 [INFO] news_query_server - 访问地址: http://localhost:18000
+2026-03-24 13:37:43 [INFO] news_query_server - 服务端日志目录: /Users/bytedance/Desktop/develop/ai/news_query_system/logs
+2026-03-24 13:37:43 [INFO] news_query_server - ============================================================
+2026-03-24 13:37:43 [ERROR] news_query_server - 服务启动失败: listen tcp :18000: bind: operation not permitted

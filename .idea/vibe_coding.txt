@@ -1,0 +1,8 @@
+时间解析使用agent api去实现解析，不要用opencode了，
+使用火山方舟的模型，
+baseUrl:https://ark.cn-beijing.volces.com/api/coding
+apiKey:ffa78d28-8524-4372-8e0e-1bd873e38b26
+model:glm-4-7-251222
+
+重构一下日志,服务端的输出全部输出到日志里面,用当天的时间作为日志的文件
+

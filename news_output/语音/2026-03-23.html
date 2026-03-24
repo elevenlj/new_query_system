@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语音新闻 - 2026-03-23</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            padding: 20px 0;
+            border-bottom: 3px solid #007bff;
+        }
+        .news-item {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .news-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+        .news-title:hover {
+            text-decoration: underline;
+        }
+        .news-meta {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .news-content {
+            line-height: 1.8;
+            color: #333;
+        }
+        .feature-list {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .feature-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .feature-list li {
+            margin: 5px 0;
+        }
+        .tag {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>语音新闻 - 2026年3月23日</h1>
+
+    <div class="news-item">
+        <a class="news-title" href="https://juejin.cn/post/7620259259633500200" target="_blank">Pipecat：构建实时语音AI Agent的开源编排框架，500ms级端到端延迟</a>
+        <div class="news-meta">
+            <span class="tag">开源</span>
+            <span class="tag">框架</span>
+            来源：CoovallyAIHub | 发布日期：2026-03-23
+        </div>
+        <div class="news-content">
+            <p><strong>简要内容摘要：</strong></p>
+            <p>Pipecat是一个开源Python框架，用于构建实时语音AI Agent。它将ASR、LLM、TTS和传输层组装成可实时对话的管线，端到端延迟控制在500-800ms，接近自然对话体验。</p>
+            <div class="feature-list">
+                <p><strong>功能亮点：</strong></p>
+                <ul>
+                    <li>端到端延迟500-800ms，接近自然对话体验</li>
+                    <li>支持18+语音识别服务商（Deepgram、OpenAI Whisper、Google、Azure等）</li>
+                    <li>支持18+大语言模型（Anthropic Claude、OpenAI GPT、Google Gemini等）</li>
+                    <li>支持24+语音合成服务商（ElevenLabs、Google、Azure、Piper本地离线等）</li>
+                    <li>支持实时语音助手、电话Agent、AI伴侣等多种场景</li>
+                    <li>支持多模态交互（语音+视频+文本）</li>
+                </ul>
+            </div>
+            <p><strong>技术亮点：</strong></p>
+            <p>采用管线（Pipeline）架构，由一系列处理器（Processor）组成，数据以帧（Frame）的形式在处理器之间流动。支持打断处理、音频流接入、多服务低延迟传递。</p>
+            <p><strong>开源地址：</strong> <a href="https://github.com/pipecat-ai/pipecat" target="_blank">https://github.com/pipecat-ai/pipecat</a></p>
+            <p><strong>文档：</strong> <a href="https://docs.pipecat.ai" target="_blank">docs.pipecat.ai</a></p>
+        </div>
+    </div>
+
+    <div class="news-item">
+        <a class="news-title" href="https://cloud.tencent.com/developer/article/2639517" target="_blank">微软重磅开源！VibeVoice再添新成员，60分钟音频ASR端到端统一输出</a>
+        <div class="news-meta">
+            <span class="tag">开源</span>
+            <span class="tag">ASR</span>
+            来源：腾讯云开发者社区 | 发布日期：2026-03-16
+        </div>
+        <div class="news-content">
+            <p><strong>简要内容摘要：</strong></p>
+            <p>微软正式开源VibeVoice-ASR，一个拥有90亿参数（9B）的统一语音识别模型。该模型能在64K超长上下文窗口内一次性处理整整60分钟的音频，并直接输出结构化结果，实现ASR领域的"三位一体"：Who（谁说的）+ When（什么时候说的）+ What（说了啥）。</p>
+            <div class="feature-list">
+                <p><strong>功能亮点：</strong></p>
+                <ul>
+                    <li>60分钟单次处理：可接受长达60分钟的连续音频输入</li>
+                    <li>端到端统一输出：联合执行ASR、人声分割和时间戳功能</li>
+                    <li>说话人追踪：自动区分说话人ID，全程追踪</li>
+                    <li>多语言支持：支持超过50种语言，无需显式语言设置</li>
+                    <li>语码切换支持：原生处理语句内和语句间的语码切换</li>
+                    <li>热词自定义：支持自定义热词，提升识别准确率</li>
+                </ul>
+            </div>
+            <p><strong>技术亮点：</strong></p>
+            <p>VibeVoice-ASR实现了End-to-End的端到端统一输出，一次推理搞定三件事：Who（谁在说）、When（什么时候说）、What（说了啥），直接省去了繁琐的后处理步骤。</p>
+            <p><strong>开源地址：</strong></p>
+            <p>模型：<a href="https://huggingface.co/microsoft/VibeVoice-ASR" target="_blank">https://huggingface.co/microsoft/VibeVoice-ASR</a></p>
+            <p>GitHub：<a href="https://github.com/microsoft/VibeVoice" target="_blank">https://github.com/microsoft/VibeVoice</a></p>
+        </div>
+    </div>
+
+    <div class="news-item">
+        <a class="news-title" href="https://finance.sina.cn/tech/2026-03-19/detail-inhrmyec7174176.d.html" target="_blank">小米自研MiMo-V2-TTS语言合成大模型发布：能说会唱 河南话、粤语等样样精通</a>
+        <div class="news-meta">
+            <span class="tag">TTS</span>
+            <span class="tag">小米</span>
+            来源：快科技 | 发布日期：2026-03-19
+        </div>
+        <div class="news-content">
+            <p><strong>简要内容摘要：</strong></p>
+            <p>小米发布Xiaomi MiMo-V2-TTS，这是小米自研语音合成大模型，不仅能说、能演，还会唱。基于自研Audio Tokenizer和多码本语音-文本联合建模架构，经过上亿小时语音数据的大规模预训练与多维度强化学习，实现高度可控的多粒度语音风格控制。</p>
+            <div class="feature-list">
+                <p><strong>功能亮点：</strong></p>
+                <ul>
+                    <li>高度可控的多粒度语音风格控制：从整体风格定调到局部情绪表达</li>
+                    <li>多方言支持：支持东北话、四川话、河南话、粤语、台湾腔等</li>
+                    <li>角色扮演式风格化演绎</li>
+                    <li>高质量歌声合成：准确表达音高和节奏</li>
+                    <li>智能文本理解：自动识别标点符号、语气词、强调标记并转化为恰当语音表达</li>
+                </ul>
+            </div>
+            <p><strong>技术亮点：</strong></p>
+            <p>基于自研Audio Tokenizer和多码本语音-文本联合建模架构，采用上亿小时语音数据进行大规模预训练，引入多维度强化学习兼顾稳定性与表现力。</p>
+        </div>
+    </div>
+
+    <div class="news-item">
+        <a class="news-title" href="https://www.aipuzi.cn/ai-news/covo-audio.html" target="_blank">Covo-Audio：腾讯开源7B端到端音频大模型，原生全双工对话与智能音色解耦</a>
+        <div class="news-meta">
+            <span class="tag">开源</span>
+            <span class="tag">端到端</span>
+            来源：AI铺子 | 发布日期：2026-03-18
+        </div>
+        <div class="news-content">
+            <p><strong>简要内容摘要：</strong></p>
+            <p>腾讯AI Lab研发并开源的7B参数端到端大型音频语言模型，定位为统一处理"听-说-思"的全栈语音交互基座。它打破传统语音系统"ASR+LLM+TTS"串联拼接的架构，在单一模型内完成音频输入、语义理解、逻辑推理、语音生成全流程。</p>
+            <div class="feature-list">
+                <p><strong>功能亮点：</strong></p>
+                <ul>
+                    <li>端到端统一架构，无中间文本损耗</li>
+                    <li>原生全双工语音交互：支持边听边说、打断、插话</li>
+                    <li>智能-说话人解耦：音色与对话智能分离，灵活迁移</li>
+                    <li>层级三模态融合：兼顾语义与韵律</li>
+                    <li>多任务支持：语音识别、语音翻译、音频问答、口语对话等</li>
+                    <li>轻量化易部署：7B参数可在单卡GPU运行</li>
+                </ul>
+            </div>
+            <p><strong>评测效果：</strong></p>
+            <ul>
+                <li>语音识别（Aishell-1）：WER=1.07%</li>
+                <li>情感共情（VStyle）：中文愤怒/悲伤/焦虑接近满分</li>
+                <li>音频理解（MMSU）：平均准确率66.64%</li>
+            </ul>
+            <p><strong>开源地址：</strong> <a href="https://github.com/TencentAI/Covo-Audio" target="_blank">https://github.com/TencentAI/Covo-Audio</a></p>
+        </div>
+    </div>
+
+    <div class="news-item">
+        <a class="news-title" href="https://k.sina.com.cn/article_7857201856_1d45362c001902u3d4.html" target="_blank">通义千问重磅开源Qwen3-TTS：97ms超低延迟语音合成，3秒克隆+一句话设计音色</a>
+        <div class="news-meta">
+            <span class="tag">开源</span>
+            <span class="tag">TTS</span>
+            来源：新浪新闻 | 发布日期：2026-03-04
+        </div>
+        <div class="news-content">
+            <p><strong>简要内容摘要：</strong></p>
+            <p>阿里通义千问团队正式开源Qwen3-TTS系列语音生成模型家族，采用端到端架构，支持秒级音色克隆、自然语言音色设计以及实时流式输出。核心创新在于Dual-Track双轨混合流式生成机制，端到端延迟低至97ms。</p>
+            <div class="feature-list">
+                <p><strong>功能亮点：</strong></p>
+                <ul>
+                    <li>97ms超低延迟：输入仅1个字即可输出首包音频</li>
+                    <li>3秒语音克隆：仅需3秒参考音频实现高保真零样本音色复刻</li>
+                    <li>跨语种音色迁移：中文音色可直接用于说10种主流语言</li>
+                    <li>一句话设计音色：通过自然语言描述生成全新虚拟音色</li>
+                    <li>双尺寸模型：1.7B（高性能）和0.6B（轻量化）可选</li>
+                </ul>
+            </div>
+            <p><strong>技术亮点：</strong></p>
+            <p>Dual-Track双轨混合流式生成机制，结合离散多码本语言模型，直接端到端建模语音，避免传统级联架构（如LM+DiT）的信息瓶颈。训练数据涵盖10种语言、总计逾500万小时。</p>
+            <p><strong>开源地址：</strong></p>
+            <p>HuggingFace：<a href="https://huggingface.co/collections/Qwen/qwen3-tts" target="_blank">https://huggingface.co/collections/Qwen/qwen3-tts</a></p>
+            <p>GitHub：<a href="https://github.com/QwenLM/Qwen3-TTS" target="_blank">https://github.com/QwenLM/Qwen3-TTS</a></p>
+        </div>
+    </div>
+
+    <div class="news-item">
+        <a class="news-title" href="https://www.qbitai.com/2026/01/374421.html" target="_blank">千问语音识别模型Qwen3-ASR开源！饶舌RAP歌曲也能轻松识别</a>
+        <div class="news-meta">
+            <span class="tag">开源</span>
+            <span class="tag">ASR</span>
+            来源：量子位 | 发布日期：2026-01-29
+        </div>
+        <div class="news-content">
+            <p><strong>简要内容摘要：</strong></p>
+            <p>阿里开源千问语音识别模型Qwen3-ASR系列，在数项权威评测中斩获开源最佳（SOTA），性能直逼当前顶级闭源模型。Qwen3-ASR支持52种语言与方言识别，能轻松识别语速超快的饶舌RAP歌曲。</p>
+            <div class="feature-list">
+                <p><strong>功能亮点：</strong></p>
+                <ul>
+                    <li>52种语言与方言识别：30个语种+22种中文方言+多国英文口音</li>
+                    <li>超快语速识别：轻松识别饶舌RAP歌曲</li>
+                    <li>复杂场景鲁棒：老人/儿童语音、强噪声、鬼畜重复等</li>
+                    <li>歌唱转写：支持带背景音乐的歌曲识别</li>
+                    <li>高效推理：10秒处理5小时音频</li>
+                    <li>双尺寸：1.7B（高精度）和0.6B（高效）</li>
+                </ul>
+            </div>
+            <p><strong>评测效果：</strong></p>
+            <p>1.7B模型在中文、英文、中文口音与歌唱识别等场景下达开源SOTA，方言识别平均错误率比Doubao-ASR再低20%。0.6B模型128并发异步服务推理可达2000倍吞吐。</p>
+            <p><strong>开源地址：</strong></p>
+            <p>HuggingFace：<a href="https://huggingface.co/collections/Qwen/qwen3-asr" target="_blank">https://huggingface.co/collections/Qwen/qwen3-asr</a></p>
+            <p>GitHub：<a href="https://github.com/QwenLM/Qwen3-ASR" target="_blank">https://github.com/QwenLM/Qwen3-ASR</a></p>
+        </div>
+    </div>
+
+    <div class="news-item">
+        <a class="news-title" href="https://news.qq.com/rain/a/20260123A05EBS00" target="_blank">全球首个开源端到端实时语音模型Chroma 1.0发布</a>
+        <div class="news-meta">
+            <span class="tag">开源</span>
+            <span class="tag">端到端</span>
+            来源：腾讯新闻 | 发布日期：2026-01-23
+        </div>
+        <div class="news-content">
+            <p><strong>简要内容摘要：</strong></p>
+            <p>FlashLabs发布并开源Chroma 1.0，定位为全球首个开源的端到端语音到语音（Speech-to-Speech）模型。将语音理解、语义建模与声学生成纳入同一整体框架，降低系统复杂度并提升实时响应能力。</p>
+            <div class="feature-list">
+                <p><strong>功能亮点：</strong></p>
+                <ul>
+                    <li>端到端语音到语音统一系统</li>
+                    <li>语音理解、语义建模、声学生成一体化</li>
+                    <li>低延迟实时响应</li>
+                    <li>交错策略：1:2文本-音频交错</li>
+                    <li>模块化设计：Reasoner、Backbone、Decoder、Codec Decoder分离</li>
+                </ul>
+            </div>
+            <p><strong>技术亮点：</strong></p>
+            <p>采用分层架构，从理解到合成。通过1:2交错策略与多码本设计，将TTFT（首个token生成时间）压缩至毫秒级。解决了传统ASR→LLM→TTS级联方案的延迟、上下文连续性及情绪一致性问题。</p>
+            <p><strong>开源地址：</strong> <a href="https://huggingface.co/FlashLabs/Chroma-4B" target="_blank">https://huggingface.co/FlashLabs/Chroma-4B</a></p>
+            <p><strong>论文：</strong> <a href="https://arxiv.org/abs/2601.11141" target="_blank">https://arxiv.org/abs/2601.11141</a></p>
+        </div>
+    </div>
+
+    <div class="news-item">
+        <a class="news-title" href="https://view.inews.qq.com/a/20260313A03HUX00" target="_blank">Mistral AI开源Voxtral Mini 4B Realtime：低延迟、多语种、轻量化ASR解决方案</a>
+        <div class="news-meta">
+            <span class="tag">开源</span>
+            <span class="tag">ASR</span>
+            来源：腾讯新闻 | 发布日期：2026-03-13
+        </div>
+        <div class="news-content">
+            <p><strong>简要内容摘要：</strong></p>
+            <p>Mistral AI开源了一款接近离线场景准确率且延迟低于500ms的解决方案——多语言实时语音转录模型Voxtral Mini 4B Realtime 2602。该模型基于原生流式架构和自研因果音频编码器构建而成。</p>
+            <div class="feature-list">
+                <p><strong>功能亮点：</strong></p>
+                <ul>
+                    <li>转录延迟可配置：从240ms到2400ms</li>
+                    <li>13种语言实时转录支持</li>
+                    <li>4B参数规模，轻量化部署</li>
+                    <li>接近离线系统精度</li>
+                    <li>原生流式架构</li>
+                    <li>自研因果音频编码器</li>
+                </ul>
+            </div>
+            <p><strong>技术亮点：</strong></p>
+            <p>这是首批实现接近离线系统精度且延迟低于500毫秒的开源解决方案之一。通过原生流式架构和自研因果音频编码器，在低延迟流式转录与高精度语言识别间实现双全。</p>
+            <p><strong>在线运行：</strong> <a href="https://go.hyper.ai/M01Fu" target="_blank">https://go.hyper.ai/M01Fu</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
