@@ -31,17 +31,17 @@ cd /Users/bytedance/Desktop/develop/ai/news_query_system
 GOCACHE=/tmp/go-build go run main.go
 ```
 
-默认监听 `http://localhost:8000`。
+默认监听 `http://localhost:8081`。
 
 可选指定端口：
 
 ```bash
-PORT=18000 GOCACHE=/tmp/go-build go run main.go
+PORT=18081 GOCACHE=/tmp/go-build go run main.go
 ```
 
 ## 使用方式
 
-1. 打开 `http://localhost:8000`
+1. 打开 `http://localhost:8081`
 2. 添加或编辑新闻主题
 3. 点击“立即查询测试”手动执行
 4. 或点击“启动定时器”由前端按主题时间执行

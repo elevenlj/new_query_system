@@ -31,13 +31,21 @@ const (
 	arkModel      = "glm-4-7-251222"
 )
 
+type ExecutionRecord struct {
+	ThemeID     string `json:"theme_id"`
+	LastExecute string `json:"last_execute"` // 格式: "2026-03-29-10-30" (年-月-日-时-分)
+}
+
 type App struct {
 	baseDir      string
 	configFile   string
 	logsFile     string
-	serverLogDir string
 
-	mu sync.Mutex
+	serverLogDir string
+	execRecordFile string
+
+	mu             sync.Mutex
+	executionRecords map[string]ExecutionRecord // themeID -> ExecutionRecord
 }
 
 type NewsItem struct {
@@ -56,10 +64,17 @@ func main() {
 	}
 
 	app := &App{
-		baseDir:      cwd,
-		configFile:   filepath.Join(cwd, "config.json"),
-		logsFile:     filepath.Join(cwd, "logs.json"),
-		serverLogDir: filepath.Join(cwd, "logs"),
+		baseDir:        cwd,
+		configFile:     filepath.Join(cwd, "config.json"),
+		logsFile:       filepath.Join(cwd, "logs.json"),
+		serverLogDir:   filepath.Join(cwd, "logs"),
+		execRecordFile: filepath.Join(cwd, "execution_records.json"),
+		executionRecords: make(map[string]ExecutionRecord),
+	}
+
+	// 加载执行记录
+	if err := app.loadExecutionRecords(); err != nil {
+		app.logf("WARN", "加载执行记录失败: %v", err)
 	}
 
 	if err := os.MkdirAll(app.serverLogDir, 0o755); err != nil {
@@ -71,7 +86,7 @@ func main() {
 
 	port := strings.TrimSpace(os.Getenv("PORT"))
 	if port == "" {
-		port = "8000"
+		port = "8081"
 	}
 	app.logf("INFO", "%s", strings.Repeat("=", 60))
 	app.logf("INFO", "新闻查询配置系统 (Go 版本)")
@@ -310,7 +325,8 @@ func (a *App) handleRunQuery(w http.ResponseWriter, req map[string]any) {
 	themeName := getString(theme, "name")
 	a.logf("INFO", "开始执行查询，theme_id=%s, theme_name=%s", themeID, themeName)
 
-	yesterday := time.Now().AddDate(0, 0, -1).Format("2006-01-02")
+	// 使用当前日期
+	today := time.Now().Format("2006-01-02")
 	settings := getMap(cfg, "settings")
 	outputBase := getStringWithDefault(settings, "output_base_path", "/Users/bytedance/news_output")
 	folder := getString(theme, "folder")
@@ -319,26 +335,20 @@ func (a *App) handleRunQuery(w http.ResponseWriter, req map[string]any) {
 		a.writeJSON(w, http.StatusInternalServerError, map[string]any{"success": false, "error": err.Error()})
 		return
 	}
-	outputFile := filepath.Join(folderPath, yesterday+".html")
+	outputFile := filepath.Join(folderPath, today+".html")
+
+	// 读取已有内容
+	existingContent := ""
+	if data, err := os.ReadFile(outputFile); err == nil {
+		existingContent = string(data)
+	}
 
 	opencodePath := getOpenCodePath()
 	userPrompt := getString(theme, "prompt")
-	minCount := getInt(theme, "min_news_count")
 
-	minRequirement := ""
-	if minCount > 0 {
-		minRequirement = fmt.Sprintf("\n最少需要找到 %d 条新新闻，如果少于这个数量请不要添加。", minCount)
-	}
-
-	appendInstruction := "创建新文件并写入所有找到的新闻。"
-	if _, err := os.Stat(outputFile); err == nil {
-		appendInstruction = fmt.Sprintf("文件 %s 已经存在，请将新找到的新闻追加到已有内容后面，**注意不要重复添加已有的新闻**，去重后保留所有不重复的新闻。", outputFile)
-	}
-
-	prompt := fmt.Sprintf(`查询前一天新闻，主题为%s。
-用户对该主题的新闻要求/提示词：%s%s
-查询日期范围：%s（前一天）
-文件名：%s.html，保存在%s/%s/下。
+	prompt := fmt.Sprintf(`查询当天新闻，主题为%s。
+用户对该主题的新闻要求/提示词：%s
+查询日期范围：%s（今天）
 每条新闻需要包含：
 1. 新闻标题
 2. 发布来源
@@ -346,25 +356,31 @@ func (a *App) handleRunQuery(w http.ResponseWriter, req map[string]any) {
 4. 简要内容摘要
 5. **原始新闻链接URL**（必须包含，方便用户点击查看原文）
 
+已有新闻内容如下（已存在的新闻）：
 %s
+
+请根据已有新闻内容，搜索并找到**新的、不重复的新闻**。
+检查重复的方法：
+1. 根据新闻标题判断是否重复
+2. 根据新闻链接URL判断是否重复
+3. 如果标题或URL与已有新闻相同或高度相似，则认为是重复新闻
+
+只返回**新增的不重复新闻**，不要包含已有的新闻。
 请整理成清晰的HTML格式。
 注意：任何权限我都同意直接执行，不需要询问确认。请直接执行所有必要的操作，包括网络搜索、文件读写等。`,
 		themeName,
 		userPrompt,
-		minRequirement,
-		yesterday,
-		yesterday,
-		outputBase,
-		folder,
-		appendInstruction,
+		today,
+		existingContent,
 	)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 300*time.Second)
 	defer cancel()
 	cmd := exec.CommandContext(ctx, opencodePath, "run", prompt)
+	var stdout bytes.Buffer
 	var stderr bytes.Buffer
+	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
-	cmd.Stdout = io.Discard
 
 	err = cmd.Run()
 	if ctx.Err() == context.DeadlineExceeded {
@@ -377,26 +393,33 @@ func (a *App) handleRunQuery(w http.ResponseWriter, req map[string]any) {
 		return
 	}
 
-	message := "查询请求已处理"
-	if minCount > 0 {
-		if _, err := os.Stat(outputFile); err == nil {
-			actualCount := countNewsInFile(outputFile)
-			if actualCount < minCount {
-				_ = os.Remove(outputFile)
-				message = fmt.Sprintf("查询完成但仅找到 %d 条新闻，少于要求的 %d 条，已删除文件", actualCount, minCount)
-				a.writeJSON(w, http.StatusOK, map[string]any{
-					"success":      false,
-					"error":        message,
-					"actual_count": actualCount,
-					"min_count":    minCount,
-				})
+	newContent := stdout.String()
+	newContent = strings.TrimSpace(newContent)
+
+	// 如果有新内容，整合到文件中
+	if newContent != "" {
+		if existingContent != "" {
+			// 追加新内容
+			finalContent := existingContent + "\n\n" + newContent
+			if err := os.WriteFile(outputFile, []byte(finalContent), 0o644); err != nil {
+				a.writeJSON(w, http.StatusInternalServerError, map[string]any{"success": false, "error": "保存文件失败: " + err.Error()})
+				return
+			}
+		} else {
+			// 创建新文件
+			if err := os.WriteFile(outputFile, []byte(newContent), 0o644); err != nil {
+				a.writeJSON(w, http.StatusInternalServerError, map[string]any{"success": false, "error": "保存文件失败: " + err.Error()})
 				return
 			}
 		}
+		a.logf("INFO", "查询执行完成，theme=%s, output=%s, 新增内容长度=%d", themeName, outputFile, len(newContent))
+		a.writeJSON(w, http.StatusOK, map[string]any{"success": true, "output": outputFile, "message": "查询完成，已整合新内容"})
+		return
 	}
 
-	a.logf("INFO", "查询执行完成，theme=%s, output=%s", themeName, outputFile)
-	a.writeJSON(w, http.StatusOK, map[string]any{"success": true, "output": outputFile, "message": message})
+	// 没有新内容
+	a.logf("INFO", "查询执行完成，theme=%s, 没有找到新内容", themeName)
+	a.writeJSON(w, http.StatusOK, map[string]any{"success": true, "output": outputFile, "message": "查询完成，没有新内容"})
 }
 
 func (a *App) handleParseTime(w http.ResponseWriter, req map[string]any) {
@@ -707,6 +730,64 @@ func (a *App) saveLog(entry map[string]any) error {
 		return err
 	}
 	return os.WriteFile(a.logsFile, b, 0o644)
+}
+
+func (a *App) loadExecutionRecords() error {
+	a.mu.Lock()
+	defer a.mu.Unlock()
+
+	if _, err := os.Stat(a.execRecordFile); err != nil {
+		if os.IsNotExist(err) {
+			return nil
+		}
+		return err
+	}
+
+	data, err := os.ReadFile(a.execRecordFile)
+	if err != nil {
+		return err
+	}
+
+	var records map[string]ExecutionRecord
+	if err := json.Unmarshal(data, &records); err != nil {
+		return err
+	}
+
+	a.executionRecords = records
+	return nil
+}
+
+func (a *App) saveExecutionRecords() error {
+	a.mu.Lock()
+	defer a.mu.Unlock()
+
+	b, err := json.MarshalIndent(a.executionRecords, "", "  ")
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(a.execRecordFile, b, 0o644)
+}
+
+func (a *App) shouldExecute(themeID string, cronExpr string) bool {
+	a.mu.Lock()
+	defer a.mu.Unlock()
+
+	now := time.Now()
+	currentKey := fmt.Sprintf("%d-%02d-%02d-%02d-%02d",
+		now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute())
+
+	record, exists := a.executionRecords[themeID]
+	if !exists || record.LastExecute != currentKey {
+		// 更新执行记录
+		a.executionRecords[themeID] = ExecutionRecord{
+			ThemeID:     themeID,
+			LastExecute: currentKey,
+		}
+		go a.saveExecutionRecords()
+		return true
+	}
+
+	return false
 }
 
 func defaultConfig() map[string]any {

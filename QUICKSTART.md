@@ -9,7 +9,7 @@ GOCACHE=/tmp/go-build go run main.go
 
 看到启动日志后，打开：
 
-- `http://localhost:8000`
+- `http://localhost:8081`
 
 ## 2. 配置主题
 
@@ -26,7 +26,7 @@ GOCACHE=/tmp/go-build go run main.go
 在页面点击“立即查询测试”，或调用接口：
 
 ```bash
-curl -X POST http://localhost:8000/run_query \
+curl -X POST http://localhost:8081/run_query \
   -H 'Content-Type: application/json' \
   -d '{"theme_id": 1774183263340}'
 ```
@@ -37,7 +37,7 @@ curl -X POST http://localhost:8000/run_query \
 也可手动请求：
 
 ```bash
-curl -X POST http://localhost:8000/parse_time \
+curl -X POST http://localhost:8081/parse_time \
   -H 'Content-Type: application/json' \
   -d '{"description":"每天早上10点"}'
 ```

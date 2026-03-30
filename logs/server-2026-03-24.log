@@ -1,19 +1,19 @@
 2026-03-24 09:03:28,617 [INFO] news_query_server - daily-log-smoke-test
 2026-03-24 09:05:56,514 [INFO] news_query_server - ============================================================
 2026-03-24 09:05:56,515 [INFO] news_query_server - 新闻查询配置系统 (轻量级内建服务)
-2026-03-24 09:05:56,515 [INFO] news_query_server - 访问地址: http://localhost:8000
+2026-03-24 09:05:56,515 [INFO] news_query_server - 访问地址: http://localhost:8081
 2026-03-24 09:05:56,515 [INFO] news_query_server - 服务端日志目录: /Users/bytedance/Desktop/develop/ai/news_query_system/logs
 2026-03-24 09:05:56,515 [INFO] news_query_server - ============================================================
 2026-03-24 09:06:54,792 [INFO] news_query_server - ============================================================
 2026-03-24 09:06:54,793 [INFO] news_query_server - 新闻查询配置系统 (轻量级内建服务)
-2026-03-24 09:06:54,793 [INFO] news_query_server - 访问地址: http://localhost:8000
+2026-03-24 09:06:54,793 [INFO] news_query_server - 访问地址: http://localhost:8081
 2026-03-24 09:06:54,793 [INFO] news_query_server - 服务端日志目录: /Users/bytedance/Desktop/develop/ai/news_query_system/logs
 2026-03-24 09:06:54,793 [INFO] news_query_server - ============================================================
 2026-03-24 09:06:55,643 [INFO] news_query_server - HTTP 127.0.0.1 - "GET /config.json HTTP/1.1" 200 -
 2026-03-24 09:06:55,644 [INFO] news_query_server - GET /config.json -> 200
 2026-03-24 09:07:44,086 [INFO] news_query_server - ============================================================
 2026-03-24 09:07:44,088 [INFO] news_query_server - 新闻查询配置系统 (轻量级内建服务)
-2026-03-24 09:07:44,088 [INFO] news_query_server - 访问地址: http://localhost:8000
+2026-03-24 09:07:44,088 [INFO] news_query_server - 访问地址: http://localhost:8081
 2026-03-24 09:07:44,089 [INFO] news_query_server - 服务端日志目录: /Users/bytedance/Desktop/develop/ai/news_query_system/logs
 2026-03-24 09:07:44,089 [INFO] news_query_server - ============================================================
 2026-03-24 09:07:58,132 [INFO] news_query_server - HTTP 127.0.0.1 - "GET / HTTP/1.1" 200 -
@@ -41,7 +41,7 @@
 2026-03-24 09:08:24,514 [INFO] news_query_server - GET /news_list -> 200
 2026-03-24 13:07:43,860 [INFO] news_query_server - ============================================================
 2026-03-24 13:07:43,862 [INFO] news_query_server - 新闻查询配置系统 (轻量级内建服务)
-2026-03-24 13:07:43,862 [INFO] news_query_server - 访问地址: http://localhost:8000
+2026-03-24 13:07:43,862 [INFO] news_query_server - 访问地址: http://localhost:8081
 2026-03-24 13:07:43,862 [INFO] news_query_server - 服务端日志目录: /Users/bytedance/Desktop/develop/ai/news_query_system/logs
 2026-03-24 13:07:43,863 [INFO] news_query_server - ============================================================
 2026-03-24 13:07:50,708 [INFO] news_query_server - HTTP 127.0.0.1 - "GET / HTTP/1.1" 304 -
@@ -118,7 +118,7 @@ BrokenPipeError: [Errno 32] Broken pipe
 2026-03-24 13:22:33,457 [INFO] news_query_server - GET /news_list -> 200
 2026-03-24 13:25:49,736 [INFO] news_query_server - ============================================================
 2026-03-24 13:25:49,738 [INFO] news_query_server - 新闻查询配置系统 (轻量级内建服务)
-2026-03-24 13:25:49,738 [INFO] news_query_server - 访问地址: http://localhost:8000
+2026-03-24 13:25:49,738 [INFO] news_query_server - 访问地址: http://localhost:8081
 2026-03-24 13:25:49,739 [INFO] news_query_server - 服务端日志目录: /Users/bytedance/Desktop/develop/ai/news_query_system/logs
 2026-03-24 13:25:49,739 [INFO] news_query_server - ============================================================
 2026-03-24 13:25:53,856 [INFO] news_query_server - HTTP 127.0.0.1 - "GET / HTTP/1.1" 304 -
@@ -165,7 +165,7 @@ JSON 格式必须是:
 2026-03-24 13:26:12,009 [INFO] news_query_server - POST /add_log -> 200
 2026-03-24 13:37:43 [INFO] news_query_server - ============================================================
 2026-03-24 13:37:43 [INFO] news_query_server - 新闻查询配置系统 (Go 版本)
-2026-03-24 13:37:43 [INFO] news_query_server - 访问地址: http://localhost:18000
+2026-03-24 13:37:43 [INFO] news_query_server - 访问地址: http://localhost:18081
 2026-03-24 13:37:43 [INFO] news_query_server - 服务端日志目录: /Users/bytedance/Desktop/develop/ai/news_query_system/logs
 2026-03-24 13:37:43 [INFO] news_query_server - ============================================================
-2026-03-24 13:37:43 [ERROR] news_query_server - 服务启动失败: listen tcp :18000: bind: operation not permitted
+2026-03-24 13:37:43 [ERROR] news_query_server - 服务启动失败: listen tcp :18081: bind: operation not permitted

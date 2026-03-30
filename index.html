@@ -761,12 +761,10 @@
                     <div class="form-group">
                         <label>每日执行时间</label>
                         <input type="text" id="newExecutionTimeDesc" placeholder="例如: 每天凌晨1点，或者每天早上8点半" style="margin-bottom: 10px;">
-                        <button class="btn btn-secondary" onclick="parseTimeDescription('new')">🧠 AI解析时间</button>
                         <div style="margin-top: 8px; font-size: 12px; color: #666;">
-                            解析结果: <span id="newParsedTimeResult">未解析</span>
+                            解析状态: <span id="newParsedTimeResult">未解析</span>
                         </div>
-                        <input type="hidden" id="newThemeHour">
-                        <input type="hidden" id="newThemeMinute">
+                        <input type="hidden" id="newThemeCron">
                     </div>
                     <div class="form-group">
                         <label>最少新闻条数 (如果生成少于此数量则不保存，0表示不限制)</label>
@@ -793,12 +791,10 @@
             <div class="form-group">
                 <label>每日执行时间</label>
                 <input type="text" id="editExecutionTimeDesc" placeholder="例如: 每天凌晨1点，或者每天早上8点半" style="margin-bottom: 10px;">
-                <button class="btn btn-secondary" onclick="parseTimeDescription('edit')">🧠 AI解析时间</button>
                 <div style="margin-top: 8px; font-size: 12px; color: #666;">
-                    解析结果: <span id="editParsedTimeResult">未解析</span>
+                    解析状态: <span id="editParsedTimeResult">未解析</span>
                 </div>
-                <input type="hidden" id="editThemeHour">
-                <input type="hidden" id="editThemeMinute">
+                <input type="hidden" id="editThemeCron">
             </div>
             <div class="form-group">
                 <label>最少新闻条数 (如果生成少于此数量则不保存，0表示不限制)</label>
@@ -875,9 +871,7 @@
                 
                 const minCount = theme.min_news_count !== undefined ? theme.min_news_count : 0;
                 const minCountText = minCount > 0 ? `${minCount} 条` : '不限制';
-                const hour = theme.hour !== undefined ? theme.hour : 0;
-                const minute = theme.minute !== undefined ? theme.minute : 0;
-                const timeText = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+                const cronText = theme.cron || '未设置';
                 div.innerHTML = `
                     <div class="theme-header">
                         <span class="theme-name">${theme.name}</span>
@@ -888,7 +882,7 @@
                     </div>
                     <div class="theme-form">
                         <div><strong>文件夹:</strong> ${theme.folder}</div>
-                        <div><strong>执行时间:</strong> 每天 ${timeText}</div>
+                        <div><strong>执行时间:</strong> ${cronText}</div>
                         <div><strong>最少新闻条数:</strong> ${minCountText}</div>
                         <div><strong>搜索提示词:</strong> ${promptContent}</div>
                         <div class="btn-group" style="margin-top: 10px;">
@@ -916,92 +910,139 @@
             }
         }
         
-        function addTheme() {
+        async function addTheme() {
             const name = document.getElementById('newThemeName').value.trim();
             const promptStr = document.getElementById('newThemePrompt').value.trim();
-            const hour = parseInt(document.getElementById('newThemeHour').value);
-            const minute = parseInt(document.getElementById('newThemeMinute').value);
+            const timeDesc = document.getElementById('newExecutionTimeDesc').value.trim();
             const minCount = parseInt(document.getElementById('newThemeMinCount').value) || 0;
 
-            if (!name || !promptStr || isNaN(hour) || isNaN(minute)) {
-                showMessage('请先填写并解析执行时间', 'error');
+            if (!name || !promptStr || !timeDesc) {
+                showMessage('请填写完整信息', 'error');
                 return;
             }
 
             // 自动将 folder 设置为与主题名称相同
             const folder = name;
 
-            const newTheme = {
-                id: Date.now(),
-                name: name,
-                prompt: promptStr,
-                enabled: true,
-                folder: folder,
-                hour: hour >= 0 && hour <= 23 ? hour : 0,
-                minute: minute >= 0 && minute <= 59 ? minute : 0,
-                min_news_count: minCount
-            };
-            
-            config.themes.push(newTheme);
-            saveConfig();
-            renderThemes();
-            
-            document.getElementById('newThemeName').value = '';
-            document.getElementById('newThemePrompt').value = '';
-            
-            showMessage('主题添加成功', 'success');
-            addLog(`新增主题: ${name}`);
+            showMessage('正在解析时间...', 'info');
+            addLog(`自动解析时间: "${timeDesc}"`);
+
+            try {
+                const response = await fetch('/parse_time', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ description: timeDesc })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error || '解析失败');
+                }
+
+                const result = await response.json();
+
+                if (!result.success || !result.cron) {
+                    throw new Error('无法获取 cron 表达式');
+                }
+
+                const newTheme = {
+                    id: Date.now(),
+                    name: name,
+                    prompt: promptStr,
+                    enabled: true,
+                    folder: folder,
+                    cron: result.cron,
+                    cron_description: timeDesc,
+                    min_news_count: minCount
+                };
+
+                config.themes.push(newTheme);
+                await saveConfig();
+                renderThemes();
+
+                document.getElementById('newThemeName').value = '';
+                document.getElementById('newThemePrompt').value = '';
+                document.getElementById('newExecutionTimeDesc').value = '';
+                document.getElementById('newThemeMinCount').value = '0';
+                document.getElementById('newParsedTimeResult').textContent = '未解析';
+
+                showMessage(`主题添加成功，定时表达式: ${result.cron}`, 'success');
+                addLog(`新增主题: ${name}, cron: ${result.cron}`);
+            } catch (error) {
+                showMessage('添加失败: ' + error.message, 'error');
+                addLog(`添加主题失败: ${error.message}`, 'error');
+            }
         }
         
         function editTheme(id) {
             const theme = config.themes.find(t => t.id === id);
             if (!theme) return;
 
-            const hour = theme.hour !== undefined ? theme.hour : 0;
-            const minute = theme.minute !== undefined ? theme.minute : 0;
-            const timeStr = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+            const timeDesc = theme.cron_description || theme.cron || '';
 
             document.getElementById('editThemeId').value = id;
             document.getElementById('editThemeName').value = theme.name;
             document.getElementById('editThemePrompt').value = theme.prompt || '';
-            document.getElementById('editExecutionTimeDesc').value = `每天${timeStr}`;
-            document.getElementById('editThemeHour').value = hour;
-            document.getElementById('editThemeMinute').value = minute;
-            document.getElementById('editParsedTimeResult').textContent = timeStr;
+            document.getElementById('editExecutionTimeDesc').value = timeDesc;
+            document.getElementById('editThemeCron').value = theme.cron || '';
+            document.getElementById('editParsedTimeResult').textContent = theme.cron || '未解析';
             document.getElementById('editThemeMinCount').value = (theme.min_news_count !== undefined ? theme.min_news_count : 0);
             document.getElementById('editModal').style.display = 'block';
         }
         
-        function saveEdit() {
+        async function saveEdit() {
             const id = parseInt(document.getElementById('editThemeId').value);
             const theme = config.themes.find(t => t.id === id);
             if (!theme) return;
 
             const name = document.getElementById('editThemeName').value.trim();
             const promptStr = document.getElementById('editThemePrompt').value.trim();
-            const hour = parseInt(document.getElementById('editThemeHour').value);
-            const minute = parseInt(document.getElementById('editThemeMinute').value);
+            const timeDesc = document.getElementById('editExecutionTimeDesc').value.trim();
             const minCount = parseInt(document.getElementById('editThemeMinCount').value) || 0;
 
-            if (!name || !promptStr || isNaN(hour) || isNaN(minute)) {
-                showMessage('请先填写并解析执行时间', 'error');
+            if (!name || !promptStr || !timeDesc) {
+                showMessage('请填写完整信息', 'error');
                 return;
             }
 
-            theme.name = name;
-            // 自动将 folder 设置为与主题名称相同
-            theme.folder = name;
-            theme.prompt = promptStr;
-            theme.hour = hour >= 0 && hour <= 23 ? hour : 0;
-            theme.minute = minute >= 0 && minute <= 59 ? minute : 0;
-            theme.min_news_count = minCount;
+            showMessage('正在解析时间...', 'info');
+            addLog(`自动解析时间: "${timeDesc}"`);
 
-            saveConfig();
-            renderThemes();
-            closeModal();
+            try {
+                const response = await fetch('/parse_time', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ description: timeDesc })
+                });
 
-            showMessage('主题更新成功', 'success');
-            addLog(`更新主题: ${name}`);
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error || '解析失败');
+                }
+
+                const result = await response.json();
+
+                if (!result.success || !result.cron) {
+                    throw new Error('无法获取 cron 表达式');
+                }
+
+                theme.name = name;
+                theme.folder = name;
+                theme.prompt = promptStr;
+                theme.cron = result.cron;
+                theme.cron_description = timeDesc;
+                theme.min_news_count = minCount;
+
+                await saveConfig();
+                renderThemes();
+                closeModal();
+
+                showMessage(`主题更新成功，定时表达式: ${result.cron}`, 'success');
+                addLog(`更新主题: ${name}, cron: ${result.cron}`);
+            } catch (error) {
+                showMessage('更新失败: ' + error.message, 'error');
+                addLog(`更新主题失败: ${error.message}`, 'error');
+            }
         }
         
         function closeModal() {
@@ -1119,7 +1160,7 @@
                 // 检查是否返回了 HTML (通常是因为未正确启动 Go 服务而是用了普通的静态文件服务器)
                 const contentType = response.headers.get('content-type');
                 if (contentType && contentType.includes('text/html')) {
-                    throw new Error('未连接到正确的后端 API，请确保是通过 `go run main.go` 启动服务并访问 8000 端口');
+                    throw new Error('未连接到正确的后端 API，请确保是通过 `go run main.go` 启动服务并访问 8081 端口');
                 }
                 
                 const result = await response.json();
@@ -1395,83 +1436,6 @@
         
         function toggleCategory(group) {
             group.classList.toggle('collapsed');
-        }
-
-        async function parseTimeDescription(type) {
-            // type: 'new' or 'edit'
-            const descInput = document.getElementById((type === 'new' ? 'new' : 'edit') + 'ExecutionTimeDesc');
-            const desc = descInput.value.trim().toLowerCase();
-            const button = event.target;
-            const resultSpan = document.getElementById((type === 'new' ? 'new' : 'edit') + 'ParsedTimeResult');
-
-            if (!desc) {
-                showMessage('请输入时间描述', 'error');
-                return;
-            }
-
-            addLog(`开始AI解析时间描述: "${desc}"`);
-
-            // 保存原始按钮内容
-            const originalHtml = button.innerHTML;
-            // 禁用按钮并显示 loading
-            button.disabled = true;
-            button.innerHTML = '<span class="loading-spinner"></span><span class="loading-text">AI 解析中...</span>';
-
-            try {
-                // 使用 AbortController 添加超时
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 90000); // 90 秒超时
-
-                const response = await fetch('/parse_time', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        description: desc
-                    }),
-                    signal: controller.signal
-                });
-
-                clearTimeout(timeoutId);
-
-                const contentType = response.headers.get('content-type');
-                if (contentType && contentType.includes('text/html')) {
-                    throw new Error('未连接到正确的后端 API，请确保是通过 `go run main.go` 启动服务');
-                }
-
-                const result = await response.json();
-
-                if (!result.success) {
-                    throw new Error(result.error || '解析失败');
-                }
-
-                const display = result.cron || result.display || '解析成功';
-
-                // 设置结果
-                if (Number.isInteger(result.hour) && Number.isInteger(result.minute)) {
-                    const hour = Math.max(0, Math.min(23, parseInt(result.hour)));
-                    const minute = Math.max(0, Math.min(59, parseInt(result.minute)));
-                    document.getElementById((type === 'new' ? 'new' : 'edit') + 'ThemeHour').value = hour;
-                    document.getElementById((type === 'new' ? 'new' : 'edit') + 'ThemeMinute').value = minute;
-                }
-                resultSpan.textContent = display;
-
-                showMessage(`时间解析成功: ${display}`, 'success');
-                addLog(`AI时间解析成功: "${desc}" → ${display}`);
-            } catch (error) {
-                console.error('Time parsing error:', error);
-                let errorMsg = error.message;
-                if (error.name === 'AbortError') {
-                    errorMsg = '解析超时，Agent API 执行时间超过 90 秒。';
-                } else if (error.message === 'Failed to fetch') {
-                    errorMsg = '无法连接到后端 API，请确保通过 `go run main.go` 启动服务，并访问 http://localhost:8000';
-                }
-                showMessage('AI解析失败: ' + errorMsg, 'error');
-                addLog(`AI时间解析失败: "${desc}" - ${errorMsg}`, 'error');
-            } finally {
-                // 恢复按钮状态
-                button.disabled = false;
-                button.innerHTML = originalHtml;
-            }
         }
 
         loadConfig();
